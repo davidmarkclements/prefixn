@@ -1,0 +1,12 @@
+{
+  "name": "prefixn",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "David Mark Clements (@davidmarkclem)",
+  "license": "MIT",
+  "description": "Small library for generated prefixed labels"
+}
