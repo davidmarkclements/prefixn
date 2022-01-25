@@ -16,7 +16,9 @@ module.exports = function prefixn (prefix = '') {
     }
     assert(labelled.has(n) === false, ERR_USED(n))
     labelled.add(n)
-    return prefix + n
+    const tag = (...args) => String.raw(...args) + prefix + n
+    tag.toString = tag[Symbol.toPrimitive] = () => prefix + n
+    return tag
   }
 }
 

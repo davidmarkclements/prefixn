@@ -8,11 +8,12 @@ This is useful for create reproducible labels throughout a piece of code.
 
 ```js
 import prefixn from 'prefixn'
-const label = prefixn('MY-PREFIX-')
-label(0) // MY-PREFIX-0
-label(1) // MY-PREFIX-1
-label(2, 3) // MY-PREFIX-2
-label(2, 3) // MY-PREFIX-3
+const label = prefixn(':MY-PREFIX-')
+label(0).toString() // :MY-PREFIX-0
+label(1) + '' // :MY-PREFIX-1
+label(2, 3) + '' // :MY-PREFIX-2
+label(2, 3) + '' // :MY-PREFIX-3
+label(4) `append to template string` // append to template string:MY-PREFIX-4
 label(1) // throws an error, 1 has aleady been used
 ```
 

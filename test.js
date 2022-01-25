@@ -5,16 +5,19 @@ const expectedAssertOpts = { actual: false, expected: true, operator: '==' }
 
 assert.throws(() => prefixn(1), new assert.AssertionError({ message: prefixn.errors.ERR_STR, ...expectedAssertOpts }))
 
-const label = prefixn('PREFIX-')
+const label = prefixn(':PREFIX-')
 
-assert.equal(label(0), 'PREFIX-0')
-assert.equal(label(1), 'PREFIX-1')
+assert.equal(label(0), ':PREFIX-0')
+assert.equal(label(1), ':PREFIX-1')
 
 assert.throws(() => label(1), new assert.AssertionError({ message: prefixn.errors.ERR_USED(1), ...expectedAssertOpts }))
 assert.throws(() => label('2'), new assert.AssertionError({ message: prefixn.errors.ERR_INT, ...expectedAssertOpts }))
 
-assert.equal(label(2, 3), 'PREFIX-2')
-assert.equal(label(2, 3), 'PREFIX-3')
+assert.equal(label(2, 3), ':PREFIX-2')
+assert.equal(label(2, 3), ':PREFIX-3')
 assert.throws(() => label(2, 3), new assert.AssertionError({ message: prefixn.errors.ERR_USED(3), ...expectedAssertOpts }))
+
+assert.equal(label(5)`ok here we ${'go'}`, 'ok here we go:PREFIX-5')
+assert.equal(label(4)`ok here we ${'go'}`, 'ok here we go:PREFIX-4')
 
 console.log('# all tests pass')
