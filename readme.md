@@ -11,6 +11,8 @@ import prefixn from 'prefixn'
 const label = prefixn('MY-PREFIX-')
 label(0) // MY-PREFIX-0
 label(1) // MY-PREFIX-1
+label(2, 3) // MY-PREFIX-2
+label(2, 3) // MY-PREFIX-3
 label(1) // throws an error, 1 has aleady been used
 ```
 
@@ -22,9 +24,10 @@ The idea is to pass numbers directly to the returned `label` function. Using a v
 
 The initializer function, call this with the desired prefix string and it will return a function (`label`). Optional.
 
-### `label(n:Number) => String`
+### `label(n:Number, to:Number = n) => String`
 
 Call `label` with a number and it will output a string with the number prefixed according to the specified `prefix`.
+Call it with two numbers to allocate a range of numbers. Every call with the same numbers will use up that range.
 
 ## Test
 
